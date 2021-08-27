@@ -27,7 +27,6 @@ def partition(List, L, R):
     swap(List, more, R)
     return less + 1, more
 
-
 def swap(List, i, j):
     temp = List[i]
     List[i] = List[j]
