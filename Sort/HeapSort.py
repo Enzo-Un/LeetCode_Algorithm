@@ -1,3 +1,9 @@
+# 堆结构 就是用数组实现的完全二叉树结构
+# 完全二叉树中如果每棵子树的最大值都在顶部就是大根堆
+# 小根堆 ~~
+# 堆结构的heapInsert 与 heapify 操作
+# 堆结构的增大与减少
+# 优先级队列结构就是堆结构
 def heapInsert(arr, index):
     while arr[index] > arr[int((index - 1) / 2)]:  # 比较子节点的值是否大于父节点的值
         swap(arr, index, int((index - 1) / 2))  # 交换父子节点的位置
@@ -21,13 +27,13 @@ def heapify(arr, index, heapSize):  # 某个数在index，判断是否可以往�
 def heapSort(arr):
     if arr == None or len(arr) < 2:
         return
-    for i in range(len(arr)):
-        heapInsert(arr, i)
+    for i in range(len(arr)):   # O(N)
+        heapInsert(arr, i)  # 建立大根堆   O(logN)
 
     heapSize = len(arr)-1
     swap(arr, 0, heapSize)
-    while heapSize > 0:
-        heapify(arr, 0, heapSize)
+    while heapSize > 0:  #  O(N)
+        heapify(arr, 0, heapSize)  # O(logN)
         heapSize -= 1
         swap(arr, 0, heapSize)
 
