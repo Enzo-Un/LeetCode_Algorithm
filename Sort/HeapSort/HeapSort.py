@@ -1,4 +1,4 @@
-# 堆结构 就是用数组实现的完全二叉树结构
+ # 堆结构 就是用数组实现的完全二叉树结构
 # 完全二叉树中如果每棵子树的最大值都在顶部就是大根堆
 # 小根堆 ~~
 # 堆结构的heapInsert 与 heapify 操作
@@ -12,7 +12,7 @@ def heapInsert(arr, index):
 
 def heapify(arr, index, heapSize):  # 某个数在index，判断是否可以往下移动
     left = index * 2 + 1  # 计算左子节点的索引值
-    while left < heapSize:
+    while left < heapSize:  # 循环边界不到heapSize，所以heapify传入的heapSize参数就是当前最大值与最后一个交换的位置
         # 比较左右孩子谁的值大，把下标赋值给largest
         largest = left + 1 if left + 1 < heapSize and arr[left] < arr[left + 1] else left
         # 比较父节点与 孩子最大值 谁大,把下标给largest
@@ -31,9 +31,9 @@ def heapSort(arr):
         heapInsert(arr, i)  # 建立大根堆   O(logN)
 
     heapSize = len(arr)-1
-    swap(arr, 0, heapSize)
+    swap(arr, 0, heapSize) #  将index=0上的最大值与最后一位做交换
     while heapSize > 0:  #  O(N)
-        heapify(arr, 0, heapSize)  # O(logN)
+        heapify(arr, 0, heapSize)  # O(logN) 当前heapify完成后，最大值来到0的位置上
         heapSize -= 1
         swap(arr, 0, heapSize)
 
